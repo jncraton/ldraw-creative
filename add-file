@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cp /usr/share/ldraw/$1 $1
+git add -f $1
+git commit -a -m "Add $1"

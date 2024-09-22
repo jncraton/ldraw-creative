@@ -4,6 +4,14 @@ files=$(rg -oP --no-filename "[^ ]*\\.dat" parts | sed "s/\\\\/\\//" | sort | un
 echo $files
 
 for f in $files; do
+    if [ -f "p/$f" ]; then
+        continue
+    fi
+
+    if [ -f "parts/$f" ]; then
+        continue
+    fi
+
     echo "Adding $f..."
     cp -f /usr/share/ldraw/p/$f p/$f
     git add -f p/$f

@@ -4,7 +4,7 @@ cp /usr/share/ldraw/parts/$1.dat parts
 git add -f parts/$1.dat
 git commit -a -m "Add $1"
 
-files=$(rg -oP "[^ ]*\\.dat" parts/$1.dat | sed "s/\\\\/\\//")
+files=$(rg -oP "[^ ]*\\.dat" parts/$1.dat | sed "s/\\\\/\\//" | sort | uniq)
 
 for f in $files; do
     echo "Adding $f..."

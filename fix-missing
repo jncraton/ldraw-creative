@@ -1,9 +1,7 @@
 #!/bin/sh
 
-files=$(rg -oP "[^ ]*\\.dat" | sed "s/\\\\/\\//")
+files=$(rg -oP --no-filename "[^ ]*\\.dat" parts | sed "s/\\\\/\\//" | sort | uniq)
 echo $files
-
-exit
 
 for f in $files; do
     echo "Adding $f..."

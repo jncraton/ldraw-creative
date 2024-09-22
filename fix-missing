@@ -1,6 +1,8 @@
 #!/bin/sh
 
-files=$(rg -oP --no-filename "[^ ]*\\.dat" parts | sed "s/\\\\/\\//" | sort | uniq)
+files=$(rg -oP --no-filename "[^ ]*\\.dat" parts p | sed "s/\\\\/\\//" | sort | uniq)
+
+echo "$files"
 
 for f in $files; do
     if [ -f "p/$f" ]; then

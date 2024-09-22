@@ -7,7 +7,7 @@ git commit -a -m "Add $1"
 files=$(rg -oP "[^ ]*\\.dat" $1 | sed "s/\\\\/\\//")
 
 for f in $files; do
-    echo "Adding $file..."
+    echo "Adding $f..."
     cp /usr/share/ldraw/$f $f
     git add -f $f
     git commit -a -m "Add $f"

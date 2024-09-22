@@ -3,3 +3,12 @@
 cp /usr/share/ldraw/$1 $1
 git add -f $1
 git commit -a -m "Add $1"
+
+files=$(rg -oP "\w*\.dat" $1)
+
+for f in $files; do
+    echo "Adding $file..."
+    cp /usr/share/ldraw/$f $f
+    git add -f $f
+    git commit -a -m "Add $f"
+done

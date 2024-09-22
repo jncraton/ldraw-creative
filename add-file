@@ -1,14 +1,18 @@
 #!/bin/sh
 
-cp /usr/share/ldraw/$1 $1
-git add -f $1
+cp /usr/share/ldraw/parts/$1.dat parts
+git add -f parts/$1.dat
 git commit -a -m "Add $1"
 
-files=$(rg -oP "[^ ]*\\.dat" $1 | sed "s/\\\\/\\//")
+files=$(rg -oP "[^ ]*\\.dat" parts/$1.dat | sed "s/\\\\/\\//")
 
 for f in $files; do
     echo "Adding $f..."
-    cp /usr/share/ldraw/$f $f
-    git add -f $f
+    cp -f /usr/share/ldraw/p/$f p/$f
+    git add -f p/$f
+    git commit -a -m "Add $f"
+
+    cp -f /usr/share/ldraw/parts/$f parts/$f
+    git add -f parts/$f
     git commit -a -m "Add $f"
 done
